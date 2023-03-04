@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.hashers import make_password
-from .models import Company
+from .models import Company, Employee
 
 
 #Sign Up as a company
@@ -24,3 +24,25 @@ def AddCompany(request):
     company.save()
 
     return Response("Company added successfully")
+
+
+
+
+# Add employees for the company
+@api_view(['POST'])
+def AddEmployee(request):
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    company= request.POST.get("company")
+
+    company_instanse = Company.objects.get(id=company)
+
+
+    employee = Employee(
+        name=name,
+        email = email,
+        company = company_instanse,
+    )
+    employee.save()
+
+    return Response("Employee added successfully")
