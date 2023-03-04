@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.hashers import make_password
-from .models import Company, Employee, Device
+from .models import Company, Employee, Device, DeviceLog
 
 
 #Sign Up as a company
@@ -70,3 +70,32 @@ def AddDevice(request):
     device.save()
 
     return Response("Device added successfully")
+
+
+
+
+@api_view(['POST'])
+def AddDeviceLog(request):
+    company = request.POST.get("company")
+    device = request.POST.get("device")
+    employee = request.POST.get("employee")
+    condition = request.POST.get("condition")
+    check_out_date = request.POST.get("check_out_date")
+    check_in_date = request.POST.get("check_in_date")
+
+    company_instanse = Company.objects.get(id = company)
+    device_instanse = Device.objects.get(id= device)
+    employee_instanse = Employee.objects.get(id = employee)
+
+
+    device_log= DeviceLog(
+        company = company_instanse,
+        device = device_instanse,
+        employee = employee_instanse,
+        condition = condition,
+        check_out_date = check_out_date,
+        check_in_date = check_in_date
+    )
+
+    device_log.save()
+    return Response("Device Log added successfully")
