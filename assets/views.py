@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.hashers import make_password
 from .models import Company, Employee, Device, DeviceLog
+from .serializers import DeviceLogSerilizer
 
 
 #Sign Up as a company
@@ -99,3 +100,24 @@ def AddDeviceLog(request):
 
     device_log.save()
     return Response("Device Log added successfully")
+
+
+@api_view(['GET'])
+def CheckDeviceLog(request):
+    company = request.GET.get("company")
+    device = request.GET.get("device")
+    employee = request.GET.get("employee")
+
+    company_instanse = Company.objects.get(id = company)
+    device_instanse = Device.objects.get(id= device)
+    employee_instanse = Employee.objects.get(id = employee)
+
+
+    device_log = DeviceLog.objects.get(company=company_instanse,device=device_instanse,employee=employee_instanse)
+
+    seriliaze_device_log = DeviceLogSerilizer(device_log)
+
+    return Response({"device log": seriliaze_device_log.data})
+
+
+   
