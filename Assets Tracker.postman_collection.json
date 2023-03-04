@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "0e518e25-e2e2-4c1d-96dc-9b428cd8eb6c",
+		"name": "Assets Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22805396"
+	},
+	"item": [
+		{
+			"name": "Add Company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Asif",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Dhaka",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/add-company/?name=REZAN&address=Dhaka&email=asifrezan@gmail.com&password=12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-company",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "REZAN"
+						},
+						{
+							"key": "address",
+							"value": "Dhaka"
+						},
+						{
+							"key": "email",
+							"value": "asifrezan@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "12345"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/add-employee/?name=Rezan\"&email=rezan@gmail.com&company=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-employee",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Rezan\""
+						},
+						{
+							"key": "email",
+							"value": "rezan@gmail.com"
+						},
+						{
+							"key": "company",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mobile phone",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Samsung A30",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "staff",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/add-device/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-device",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Device Log",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "company",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "device",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "employee",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "condition",
+							"value": "New device",
+							"type": "text"
+						},
+						{
+							"key": "check_out_date",
+							"value": "01.02.2023",
+							"type": "text"
+						},
+						{
+							"key": "check_in_date",
+							"value": "10.02.2023",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/add-device-log/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-device-log",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get device log",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/check-log/?company=1&device=1&employee=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"check-log",
+						""
+					],
+					"query": [
+						{
+							"key": "company",
+							"value": "1"
+						},
+						{
+							"key": "device",
+							"value": "1"
+						},
+						{
+							"key": "employee",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
